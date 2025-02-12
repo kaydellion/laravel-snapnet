@@ -60,14 +60,14 @@ public function update(Request $request, Task $task)
 
 public function destroy(Task $task)
 {
-    $this->authorize('delete', $task);
+    
     $task->delete();
     return redirect()->route('tasks.index')->with('success', 'Task deleted successfully.');
 }
 
 public function markComplete(Task $task)
 {
-    $this->authorize('update', $task);
+
     $task->update(['status' => 'Completed']);
     return redirect()->route('tasks.index')->with('success', 'Task marked as completed.');
 }
