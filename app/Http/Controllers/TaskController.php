@@ -46,11 +46,11 @@ public function store(Request $request)
 
 public function update(Request $request, Task $task)
 {
-    $this->authorize('update', $task);
 
     $request->validate([
         'title' => 'required|max:255',
         'due_date' => 'required|date|after:today',
+        'status' => 'in:Pending,Completed',
     ]);
 
     $task->update($request->all());
@@ -67,7 +67,6 @@ public function destroy(Task $task)
 
 public function markComplete(Task $task)
 {
-
     $task->update(['status' => 'Completed']);
     return redirect()->route('tasks.index')->with('success', 'Task marked as completed.');
 }

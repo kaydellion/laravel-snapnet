@@ -46,7 +46,7 @@
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
                                     </form>
                                     @if ($task->status == 'Pending')
-                                        <form action="{{ route('tasks.complete', $task->id, 'complete') }}" method="POST" class="d-inline">
+                                        <form action="{{ route('tasks.complete', $task->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('PATCH')
                                             <button type="submit" class="btn btn-success btn-sm">Mark as Completed</button>
